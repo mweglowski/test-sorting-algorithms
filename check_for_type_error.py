@@ -1,4 +1,4 @@
-def checkForTypeError(answer):
+def check_for_type_error(answer):
     try:
         answer = int(answer)
         answer = str(answer)
