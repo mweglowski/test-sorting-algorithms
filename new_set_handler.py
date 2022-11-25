@@ -1,6 +1,7 @@
 import time
 from check_for_type_error import check_for_type_error
 from run_answer_input import run_answer_input
+from show_algorithms import show_algorithms
 
 def new_set_handler():
     set_length = int(input('Enter set length: '))
@@ -41,7 +42,7 @@ def new_set_handler():
         from show_landing_page import show_landing_page
         show_landing_page()
     elif answer == '2':
-        print('SHOWING ALGORITHMS')
+        show_algorithms()
     else:
         return
 
