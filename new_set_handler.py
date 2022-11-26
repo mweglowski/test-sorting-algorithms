@@ -21,22 +21,24 @@ def new_set_handler():
     print('Your set:\n' + new_set_string)
 
     # ADDING SET TO DATABASE
-    print('Adding set to our database.')
-    time.sleep(1)
-    print('Adding set to our database..')
-    time.sleep(1)
-    print('Adding set to our database...')
-    time.sleep(1)
+    print('Adding set to our database', end='')
+    time.sleep(.8)
+    print('.', end='')
+    time.sleep(.8)
+    print('.', end='')
+    time.sleep(.8)
+    print('.')
+    time.sleep(.8)
 
     with open('./setsData.txt', 'r+') as sets_data_file_handler:
         lines = sets_data_file_handler.readlines()
         next_set_id = len(lines)
-        new_set_string = f'{next_set_id}m ' + new_set_string
+        new_set_string = f'{next_set_id}m ' + new_set_string + '\n'
         sets_data_file_handler.write(new_set_string)
 
     print('Set successfully added!\n'
           '[1] Go to home page\n'
-          '[2] Choose sorting algorithm')
+          '[2] Choose algorithm to sort this set')
     answer = run_answer_input()
     if answer == '1':
         from show_landing_page import show_landing_page

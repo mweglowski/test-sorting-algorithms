@@ -12,6 +12,11 @@ def choose_set_to_sort():
     print('Selected Set: ' + set_to_show)
 
     sets_data_file_handler.close()
+    # SETTING SELECTED SET STATE
+    with open('./selected_set.txt', 'w') as selected_set_file_handler:
+        set_id = lines[int(answer) - 1].split()[0]
+        set_id_and_contents = set_id + ' ' + set_to_show
+        selected_set_file_handler.write(set_id_and_contents)
 
     print('[1] Choose algorithm\n'
           '[2] Select other set\n'
