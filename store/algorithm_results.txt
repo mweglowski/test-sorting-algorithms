@@ -1,1 +1,2 @@
-id_zestawu | zestaw | algorytm | czas_realizacji
+[0d] [153 54 513 885 44 996 325 701 800 658 288 605 818 450 959] [bubble_sort] [0.0164ms]
+

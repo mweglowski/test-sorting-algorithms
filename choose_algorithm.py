@@ -19,7 +19,8 @@ def choose_algorithm():
     # GET THE SELECTED SET
     selected_set_file_handler = open('./store/selected_set.txt', 'r')
     # list of strings
-    selected_set = selected_set_file_handler.read().split()[1:]
+    selected_set_string = selected_set_file_handler.read()
+    selected_set = selected_set_string.split()[1:]
     # formatting to list of integers
     selected_set = [int(string_num) for string_num in selected_set]
 
@@ -31,18 +32,29 @@ def choose_algorithm():
     print(duration * 1000)
     # 1ms = 0.001s
     # 1µs = 0.000001s
+    duration_result_string = ''
     if duration < 0.000001:
-        duration = f'{round(duration * 1000000)}µs'
+        duration_result_string = f'{round(duration * 1000000)}µs'
     elif duration >= 0.000001 and duration < 0.001:
-        duration = f'{round(duration * 1000000)}µs'
+        duration_result_string = f'{round(duration * 1000000)}µs'
     elif duration >= 0.001 and duration < 1:
-        duration = f'{round(duration * 1000)}ms'
+        duration_result_string = f'{round(duration * 1000)}ms'
     else:
-        duration = f'{round(duration, 3)}s'
+        duration_result_string = f'{round(duration, 3)}s'
 
     print('Sorted: ', end='')
     print(module.sort_set(selected_set))
-    print('Duration: {}'.format(duration))
+    print('Duration: {}'.format(duration_result_string))
+
+    # SAVING OPERATION TO algorithm_results
+    alg_results_file_handler = open("./store./algorithm_results.txt", 'r+') 
+    set_id = selected_set_string.split(' ')[0]
+    chosen_set = " ".join(selected_set_string.split(' ')[1:])
+    duration_in_ms = f'{round(duration * 1000, 6)}' + 'ms'
+    next_sorting_result = f'[{set_id}] [{chosen_set}] [{file_name}] [{duration_in_ms}]\n'
+    alg_results_file_handler.write(next_sorting_result)
+    alg_results_file_handler.close()
+
 
     print('[1] Try another algorithm\n'
           '[2] Choose different set\n'

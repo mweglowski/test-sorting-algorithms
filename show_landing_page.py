@@ -16,14 +16,20 @@ def show_landing_page():
             show_set_testing_page()
         case '2':
             show_algorithms()
-            algorithm_count = len(os.listdir('./algorithms')) - 1
-            print('-' * 15)
-            print(f'[{algorithm_count + 1}] Go back')
+            # algorithm_count = len(os.listdir('./algorithms')) - 1
+            # print('-' * 15)
+            # print(f'[{algorithm_count + 1}] Go back')
+            print('[1] Go back')
             answer = run_answer_input()
-            if answer == f'{algorithm_count + 1}': 
+            if answer == '1': 
                 show_landing_page()
             else: 
                 return
+            # if answer == f'{algorithm_count + 1}': 
+            #     show_landing_page()
+            # else: 
+            #     return
+                
         case '3':
             show_stored_sets()
             print('[1] Go back')
