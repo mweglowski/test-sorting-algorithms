@@ -39,8 +39,6 @@ def choose_algorithm():
         duration = f'{round(duration * 1000)}ms'
     else:
         duration = f'{round(duration, 3)}s'
-    
-    # program that calculates entire lines of code
 
     print('Sorted: ', end='')
     print(module.sort_set(selected_set))

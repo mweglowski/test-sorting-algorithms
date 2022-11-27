@@ -7,7 +7,7 @@ def generate_sets_of_numbers(numOfSets, setLength):
     for i in range(numOfSets):
         num_set = [f'{i}d']
         for j in range(setLength):
-            num_set.append(str(random.randint(0, 100)))
+            num_set.append(str(random.randint(0, 1000)))
         sets.append(num_set)
 
     sets_string = ""
