@@ -8,9 +8,11 @@ def choose_algorithm():
         '1': 'quick_sort'
     }
     answer = run_answer_input()
-    file_path = algorithm_paths[str(int(answer) - 1)]
+    file_path = './algorithms/' + algorithm_paths[str(int(answer) - 1)]
     algorithm_name = file_path.replace('_', ' ').title()
-    module = __import__(file_path)
+    importlib = __import__('importlib')
+    module = importlib.import_module(file_path)
+    # module = __import__(file_path)
 
     # GET THE SELECTED SET
     selected_set_file_handler = open('./selected_set.txt', 'r')
