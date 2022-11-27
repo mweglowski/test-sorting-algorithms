@@ -13,7 +13,6 @@ def choose_algorithm():
     }
     answer = run_answer_input()
     file_name = algorithm_paths[str(int(answer) - 1)]
-    algorithm_name = file_name.replace('_', ' ').title()
     module = importlib.import_module(file_name)
 
     # GET THE SELECTED SET
@@ -50,8 +49,9 @@ def choose_algorithm():
     alg_results_file_handler = open("./store./algorithm_results.txt", 'a+') 
     set_id = selected_set_string.split(' ')[0]
     chosen_set = " ".join(selected_set_string.split(' ')[1:])
+    algorithm_name = file_name.replace('_', ' ').title()
     duration_in_ms = f'{round(duration * 1000, 6)}' + 'ms'
-    next_sorting_result = f'[{set_id}] [{chosen_set}] [{file_name}] [{duration_in_ms}]\n'
+    next_sorting_result = f'[{set_id}] [{chosen_set}] [{algorithm_name}] [{duration_in_ms}]\n'
     alg_results_file_handler.write(next_sorting_result)
     alg_results_file_handler.close()
 
