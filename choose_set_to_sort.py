@@ -1,6 +1,7 @@
 from run_answer_input import run_answer_input
 from show_algorithms import show_algorithms
 from show_stored_sets import show_stored_sets
+from choose_algorithm import choose_algorithm
 
 def choose_set_to_sort():
     sets_data_file_handler = open('./setsData.txt', 'r')
@@ -24,6 +25,7 @@ def choose_set_to_sort():
     answer = run_answer_input()
     if answer == '1':
         show_algorithms()
+        choose_algorithm()
     elif answer == '2':
         show_stored_sets()
         choose_set_to_sort()
