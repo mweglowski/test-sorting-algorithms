@@ -1,7 +1,7 @@
 import random
 
 def generate_sets_of_numbers(numOfSets, setLength):
-    file = open('setsData.txt', 'w')
+    file = open('./store/stored_sets.txt', 'w')
 
     sets = []
     for i in range(numOfSets):

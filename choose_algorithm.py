@@ -1,6 +1,10 @@
-import time
+import timeit
+import sys
+import importlib
 from run_answer_input import run_answer_input
 from show_algorithms import show_algorithms
+
+sys.path.append('c:\\Learning\\clean\\projects\\python-sorting-app\\algorithms')
 
 def choose_algorithm():
     algorithm_paths = {
@@ -8,24 +12,35 @@ def choose_algorithm():
         '1': 'quick_sort'
     }
     answer = run_answer_input()
-    file_path = './algorithms/' + algorithm_paths[str(int(answer) - 1)]
-    algorithm_name = file_path.replace('_', ' ').title()
-    importlib = __import__('importlib')
-    module = importlib.import_module(file_path)
-    # module = __import__(file_path)
+    file_name = algorithm_paths[str(int(answer) - 1)]
+    algorithm_name = file_name.replace('_', ' ').title()
+    module = importlib.import_module(file_name)
 
     # GET THE SELECTED SET
-    selected_set_file_handler = open('./selected_set.txt', 'r')
+    selected_set_file_handler = open('./store/selected_set.txt', 'r')
     # list of strings
     selected_set = selected_set_file_handler.read().split()[1:]
     # formatting to list of integers
     selected_set = [int(string_num) for string_num in selected_set]
-    print(selected_set)
 
     # Sorting operation
-    start_time = time.time()
+    start_time = timeit.default_timer()
     module.sort_set(selected_set)
-    duration = time.time() - start_time
+    duration = timeit.default_timer() - start_time
+    print(duration)
+    print(duration * 1000)
+    # 1ms = 0.001s
+    # 1µs = 0.000001s
+    if duration < 0.000001:
+        duration = f'{round(duration * 1000000)}µs'
+    elif duration >= 0.000001 and duration < 0.001:
+        duration = f'{round(duration * 1000000)}µs'
+    elif duration >= 0.001 and duration < 1:
+        duration = f'{round(duration * 1000)}ms'
+    else:
+        duration = f'{round(duration, 3)}s'
+    
+    # program that calculates entire lines of code
 
     print('Sorted: ', end='')
     print(module.sort_set(selected_set))

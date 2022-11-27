@@ -3,7 +3,7 @@ from choose_algorithm import choose_algorithm
 from new_set_handler import new_set_handler
 
 def show_stored_sets():
-    sets_data_file_handler = open('./setsData.txt', 'r')
+    sets_data_file_handler = open('./store/stored_sets.txt', 'r')
 
     lines = sets_data_file_handler.readlines()
     set_count = len(lines)

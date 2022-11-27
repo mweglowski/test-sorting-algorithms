@@ -31,11 +31,16 @@ def new_set_handler():
     print('.')
     time.sleep(.8)
 
-    with open('./setsData.txt', 'r+') as sets_data_file_handler:
-        lines = sets_data_file_handler.readlines()
-        next_set_id = len(lines)
-        new_set_string = f'{next_set_id}m ' + new_set_string + '\n'
-        sets_data_file_handler.write(new_set_string)
+    sets_data_file_handler = open('./store/stored_sets.txt', 'r+')
+    lines = sets_data_file_handler.readlines()
+    next_set_id = len(lines)
+    new_set_string = f'{next_set_id}m ' + new_set_string + '\n'
+    sets_data_file_handler.write(new_set_string)
+    sets_data_file_handler.close()
+
+    # UPDATING selected_set
+    with open('./store/selected_set.txt', 'w') as selected_set_file_handler:
+        selected_set_file_handler.write(new_set_string)
 
     print('Set successfully added!\n'
           '[1] Go to home page\n'

@@ -4,7 +4,7 @@ from show_stored_sets import show_stored_sets
 from choose_algorithm import choose_algorithm
 
 def choose_set_to_sort():
-    sets_data_file_handler = open('./setsData.txt', 'r')
+    sets_data_file_handler = open('./store/stored_sets.txt', 'r')
     lines = sets_data_file_handler.readlines()
 
     answer = run_answer_input()
@@ -13,8 +13,9 @@ def choose_set_to_sort():
     print('Selected Set: ' + set_to_show)
 
     sets_data_file_handler.close()
+    
     # SETTING SELECTED SET STATE
-    with open('./selected_set.txt', 'w') as selected_set_file_handler:
+    with open('./store/selected_set.txt', 'w') as selected_set_file_handler:
         set_id = lines[int(answer) - 1].split()[0]
         set_id_and_contents = set_id + ' ' + set_to_show
         selected_set_file_handler.write(set_id_and_contents)

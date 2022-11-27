@@ -7,12 +7,19 @@ def show_landing_page():
           '[2] Show stored sets\n'
           '[3] Enter own set')
     answer = run_answer_input()
-    if answer == '1':
-        show_set_testing_page()
-    elif answer == '2':
-        show_stored_sets()
-    elif answer == '3':
-        from new_set_handler import new_set_handler
-        new_set_handler()
-    else:
-        return
+    match answer:
+        case '1':
+            show_set_testing_page()
+        case '2':
+            show_stored_sets()
+            print('[1] Go back')
+            answer = run_answer_input()
+            if answer == '1': 
+                show_landing_page()
+            else: 
+                return
+        case '3':
+            from new_set_handler import new_set_handler
+            new_set_handler()
+        case '_':
+            return
