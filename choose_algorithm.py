@@ -42,12 +42,12 @@ def choose_algorithm():
     else:
         duration_result_string = f'{round(duration, 3)}s'
 
-    print('Sorted: ', end='')
+    print('Sorted Set: ', end='')
     print(module.sort_set(selected_set))
-    print('Duration: {}'.format(duration_result_string))
+    print('Duration Time: {}'.format(duration_result_string))
 
     # SAVING OPERATION TO algorithm_results
-    alg_results_file_handler = open("./store./algorithm_results.txt", 'r+') 
+    alg_results_file_handler = open("./store./algorithm_results.txt", 'a+') 
     set_id = selected_set_string.split(' ')[0]
     chosen_set = " ".join(selected_set_string.split(' ')[1:])
     duration_in_ms = f'{round(duration * 1000, 6)}' + 'ms'
