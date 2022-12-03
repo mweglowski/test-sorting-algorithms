@@ -3,9 +3,13 @@ from run_answer_input import run_answer_input
 def show_ranking():
 	ranking_file_handler = open("./store/ranking.txt", 'r')
 	ranking_file_handler_lines = ranking_file_handler.readlines()
+	ranking_file_handler_lines_length = len(ranking_file_handler_lines)
 	output = ""
-	for i in range(len(ranking_file_handler_lines)):
-		output += f'{i + 1}. {ranking_file_handler_lines[i]}\n'
+	if ranking_file_handler_lines_length > 0:
+		for i in range(ranking_file_handler_lines_length):
+			output += f'{i + 1}. {ranking_file_handler_lines[i]}\n'
+	else:
+		output = "[Ranking is empty]"
 	
 	print(output)
 	print("[1] Go back")

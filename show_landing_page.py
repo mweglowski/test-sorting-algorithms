@@ -10,8 +10,8 @@ def show_landing_page():
           '[2] Algorithms\n'
           '[3] Stored sets\n'
           '[4] Ranking\n'
-          '[4] Enter own set\n'
-          '[5] Exit')
+          '[5] Enter own set\n'
+          '[6] Exit')
     answer = run_answer_input()
     match answer:
         case '1':
