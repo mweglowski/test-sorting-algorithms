@@ -27,8 +27,6 @@ def choose_algorithm():
     start_time = timeit.default_timer()
     module.sort_set(selected_set)
     duration = timeit.default_timer() - start_time
-    print(duration)
-    print(duration * 1000)
     # 1ms = 0.001s
     # 1µs = 0.000001s
     duration_result_string = ''

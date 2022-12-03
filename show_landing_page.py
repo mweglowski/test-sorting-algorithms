@@ -1,13 +1,15 @@
-import os
+# import os
 from show_set_testing_page import show_set_testing_page
 from run_answer_input import run_answer_input
 from show_stored_sets import show_stored_sets
 from show_algorithms import show_algorithms
+from show_ranking import show_ranking
 
 def show_landing_page():
     print('[1] Test some numbers\n'
-          '[2] Show algorithms\n'
-          '[3] Show stored sets\n'
+          '[2] Algorithms\n'
+          '[3] Stored sets\n'
+          '[4] Ranking\n'
           '[4] Enter own set\n'
           '[5] Exit')
     answer = run_answer_input()
@@ -39,9 +41,11 @@ def show_landing_page():
             else: 
                 return
         case '4':
+            show_ranking()
+        case '5':
             from new_set_handler import new_set_handler
             new_set_handler()
-        case '5':
+        case '6':
             print('See you again!')
             exit()
         case '_':
