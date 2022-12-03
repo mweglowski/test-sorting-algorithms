@@ -45,7 +45,7 @@ def choose_algorithm():
     print(module.sort_set(selected_set))
     print('Duration Time: {}'.format(duration_result_string))
 
-    # SAVING OPERATION TO algorithm_results
+    # SAVING OPERATION TO algorithm_results.txt
     alg_results_file_handler = open("./store./algorithm_results.txt", 'a+') 
     set_id = selected_set_string.split(' ')[0]
     chosen_set = " ".join(selected_set_string.split(' ')[1:])
@@ -54,6 +54,34 @@ def choose_algorithm():
     next_sorting_result = f'[{set_id}] [{chosen_set}] [{algorithm_name}] [{duration_in_ms}]\n'
     alg_results_file_handler.write(next_sorting_result)
     alg_results_file_handler.close()
+
+    # ADDING RESULT TO ranking.txt
+    ranking_file_handler = open("./store/ranking.txt", "r")
+    set_length = len(selected_set_string.split(' ')[1:])
+    execution_time_in_ms = round(duration * 1000, 6)
+    points = round(set_length / execution_time_in_ms)
+    ranking_item = f'[{points}] [{algorithm_name}] [{duration_in_ms}] [{set_id}] [{chosen_set}]\n'
+    ranking_file_handler_lines = ranking_file_handler.readlines()
+    ranking_file_handler_lines_length = len(ranking_file_handler_lines)
+    ranking_file_handler.close()
+    
+
+    if ranking_file_handler_lines_length < 1:
+        ranking_file_handler = open('./store/ranking.txt', 'w')
+        ranking_file_handler.write(ranking_item)
+        ranking_file_handler.close()
+    else:
+        ranking_file_handler = open('./store/ranking.txt', 'w')
+        for i in range(ranking_file_handler_lines_length):
+            current_item = ranking_file_handler_lines[i]
+            current_item_points = int(current_item.split(' ')[0][1:-1])
+            if current_item_points < points:
+                ranking_file_handler_lines.insert(i, ranking_item)
+                break
+        ranking_file_handler.writelines(ranking_file_handler_lines)
+
+    ranking_file_handler.close()
+
 
 
     print('[1] Try another algorithm\n'
