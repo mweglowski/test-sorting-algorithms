@@ -9,7 +9,11 @@ sys.path.append('c:\\Learning\\clean\\projects\\python-sorting-app\\algorithms')
 def choose_algorithm():
     algorithm_paths = {
         '0': 'bubble_sort',
-        '1': 'quick_sort'
+        '1': 'quick_sort',
+        '2': 'insertion_sort',
+        '3': 'bucket_sort',
+        '4': 'selection_sort',
+        '5': 'merge_sort',
     }
     answer = run_answer_input()
     file_name = algorithm_paths[str(int(answer) - 1)]
